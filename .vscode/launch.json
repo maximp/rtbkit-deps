@@ -1,0 +1,62 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Подключить",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "${workspaceFolder}/_debug/bin/np-tests",
+            "processId": "${command:pickProcess}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Включить автоматическое форматирование для gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Debug Tests",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/_debug/bin/tests",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/_debug/bin",
+//            "args": ["-d", "yes", "--debug", "socks5::auth_session"],
+            "args": ["-d", "yes", "--debug"],
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Debug Console",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/_debug/bin/csocks",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/_debug/bin",
+            "args": ["-u", "http://www.google.com", "-p", "servicegates.net:10000", "-v", "-t", "3"],
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
