@@ -9,6 +9,7 @@ GXX_MAJOR_VERSION := $(shell $(GXX) -dumpversion | cut -d'.' -f1)
 GXX_MINOR_VERSION := $(shell $(GXX) -dumpversion | cut -d'.' -f2)
 CC  = "ccache $(GCC)"
 CXX = "ccache $(GXX)"
+CXXFLAGS = -std=c++17
 SHELL:=/bin/bash
 
 # Determines the number of parallel jobs that will be used to build each of the submodules
@@ -17,7 +18,8 @@ JOBS?=8
 #determine if node js is used, if using ubuntu 14 it should be disabled
 NODEJS_ENABLED := 0
 
-all: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_libssh2 install_protobuf install_zookeeper install_redis install_pistache
+#all: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_libssh2 install_protobuf install_zookeeper install_redis install_pistache
+all: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_protobuf install_zookeeper install_redis install_pistache
 
 .PHONY: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_libssh2 install_protobuf install_zookeeper install_redis install_pistache
 
@@ -64,8 +66,9 @@ install_snappy:
 
 install_protobuf:
 	cd protobuf; \
-	./autogen.sh; \
-	CXX=$(CXX) CC=$(CC) ./configure --prefix $(TARGET); \
+	if [ ! -d .build ]; then mkdir .build; fi; \
+	cd .build; \
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(TARGET) .. ; \
 	make install
 
 DISABLE_SSE42 ?= 0
@@ -91,7 +94,7 @@ install_zeromq:
 install_libssh2:
 	cd libssh2; \
 	./buildconf; \
-	CXX=$(CXX) CC=$(CC) ./configure --prefix $(TARGET); \
+	CXX=$(CXX) CC=$(CC) ./configure --prefix $(TARGET) --with-openssl; \
 	make -j$(JOBS) -k; \
 	make install
 

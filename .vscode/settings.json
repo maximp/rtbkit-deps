@@ -89,7 +89,13 @@
         "slist": "cpp",
         "scoped_allocator": "cpp",
         "valarray": "cpp",
-        "*.inc": "cpp"
+        "*.inc": "cpp",
+        "libssh2_priv.h": "c",
+        "libssh2_config.h": "c",
+        "mac.h": "c",
+        "crypto.h": "c",
+        "openssl.h": "c",
+        "evp.h": "c"
     },
     "C_Cpp.default.compileCommands": "_debug/compile_commands.json",
     "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",

@@ -12,7 +12,7 @@
             "problemMatcher": "$gcc",
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             }
         },
         {
@@ -33,12 +33,14 @@
             "type": "shell",
             "command": "make",
             "args": [
-		        "release"
+                "-j10",
+		        "all",
+                "NODEJS_ENABLED=0"
             ],
             "problemMatcher": "$gcc",
             "group": {
                 "kind": "build",
-                "isDefault": false
+                "isDefault": true
             }
         }
     ]
