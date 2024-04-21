@@ -34,13 +34,13 @@ install_node:
 	fi
 
 install_boost:
-	if [ ! -f boost_1_57_0/b2 ]; \
+	if [ ! -f boost_1_85_0/b2 ]; \
 	then \
-		cd boost_1_57_0; \
+		cd boost_1_85_0; \
 		./bootstrap.sh --prefix=$(TARGET); \
 		sed -i '1i using gcc : : $(GCC) ;' ./project-config.jam; \
 	fi
-	cd boost_1_57_0; \
+	cd boost_1_85_0; \
 	./bjam include=/usr/lib; \
 	./b2 -j$(JOBS) variant=release link=shared threading=multi runtime-link=shared --without=graph --without-graph_parallel --without-mpi install;
 
