@@ -19,7 +19,7 @@ JOBS?=8
 NODEJS_ENABLED := 0
 
 #all: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_libssh2 install_protobuf install_zookeeper install_redis install_pistache
-all: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_protobuf install_zookeeper install_redis install_pistache
+all: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_protobuf install_redis install_pistache
 
 .PHONY: install_node install_boost install_userspacercu install_hiredis install_snappy install_cityhash install_zeromq install_libssh2 install_protobuf install_zookeeper install_redis install_pistache
 
