@@ -34,7 +34,7 @@
             "command": "make",
             "args": [
                 "-j10",
-		        "all",
+	        "all",
                 "NODEJS_ENABLED=0"
             ],
             "problemMatcher": "$gcc",
